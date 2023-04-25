@@ -1,0 +1,110 @@
+DevOps:
+=============
+
+Source Code Managemnet Tool : Git
+====================================
+SVN- Subversion - Tortoise svn
+VCS - Version control system
+CVS - Centralised Version system
+Bit Bucket - Paid version
+
+what is Git:
+========
+
+what is the pre-Req:
+====================
+git server
+AWS - EC2
+
+Git is having with 2 Repositories 
+=========================
+1. Local Repo
+2. Remote Repo
+Local Repo:
+===============
+
+git config --global user.name "shobha"
+git config --global user.email "reddy.sobha19@gmail.com"
+
+vim file1
+hi team
+how are you
+:wq!
+
+git status
+
+git add "file1"
+
+git commit -m "file1"
+
+Git history:
+==============
+git log
+
+git log --oneline
+
+git add & git commit - existing file
+
+git add
+git commit 
+
+file1
+============
+imp content
+deleted file1 - git status, git commit
+
+file1 - get back 
+
+git revert commitid
+
+git add
+
+git commit
+
+vim file6
+============
+soft
+mixed
+
+Git Branching:
+=================
+dev branch
+SDLC
+
+waterfall model
+
+Plan
+code - java, .net, c, c++ - source code is given by - 2 months of time
+testing - 2 months 
+devops - 2 months of team
+
+agile methodology
+============
+2 days testing - 2 days - 
+branch
+==========
+dev - feature branch - dev en
+
+ENV
+========
+1. Dev environmnet - developing
+2. QA env - UAT, SAT - qa branch
+3. Pre-production - 
+4. Production - master barnch
+  hotfix branch -
+
+main branch
+===============
+
+git merge
+
+
+
+
+
+
+
+
+
+
+
