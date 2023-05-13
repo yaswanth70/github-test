@@ -1,0 +1,58 @@
+
+pipeline{
+  agent any
+    stages{
+	 stage('checkout'){
+	   steps{
+	        git 'https://github.com/SobhaReddy/DevOpsClassCodes.git'
+	   }
+	 }
+	 stage('compile'){
+	   steps{
+	     sh 'mvn compile'
+	   }
+	 }
+	 stage('codeReview'){
+	   steps{
+	     sh 'mvn pmd:pmd'
+	   }
+	 }
+	 stage('unitTest'){
+	   steps{
+	     sh 'mvn test'
+	   }
+	 }
+	 stage('metricCheck'){
+	   steps{
+	     sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+	   }
+	 }
+	 stage('package'){
+	   steps{
+	     sh 'mvn package'
+	   }
+	   stage('Deploy'){
+      agent any
+      steps{
+        sh label: '', script: '''rm -rf mydockerfile
+mkdir mydockerfile
+cd mydockerfile
+cp /var/lib/jenkins/workspace/package/target/addressbook.war .
+touch dockerfile
+cat <<EOT>> dockerfile
+From tomcat
+ADD addressbook.war /usr/local/tomcat/webapps
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+EOT
+sudo docker build -t myimage:$BUILD_NUMBER .
+sudo docker run -itd -P myimage:$BUILD_NUMBER'''
+      }
+    }
+
+          
+      }
+}
+	 }
+  
+
